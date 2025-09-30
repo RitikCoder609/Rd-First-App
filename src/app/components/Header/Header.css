@@ -1,0 +1,945 @@
+/* src/components/Header/Header.css */
+
+/* ================================ Header */
+.main-header {
+  width: 100vw;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  box-shadow: 0 2px 16px rgba(44,63,80,0.06);
+  position: relative;
+  z-index: 10;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+}
+
+.header-left { 
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-title { 
+  font-size: 22px;
+  font-weight: 700;
+  color: #212325;
+}
+
+.cab-manage { 
+  font-size: 13px;
+  color: #757575;
+  margin-top: 2px;
+}
+
+.header-right { 
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.search-bar { 
+  padding: 7px 16px;
+  border-radius: 5px;
+  border: 1px solid #E6E8EB;
+  font-size: 15px;
+}
+
+.filter-btn, .add-cab-btn { 
+  padding: 7px 20px;
+  border-radius: 4px;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  background: #f1f3fa;
+  color: #444;
+  
+}
+
+.add-cab-btn { 
+background: linear-gradient(to right, #2563EB, #4F46E5);
+
+
+  color: #fff;
+}
+
+/* ================================ Header ke baad content container */
+.content-container { 
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 10px; /* Kam kiya padding left-right */
+  background: #f8fafc;
+}
+
+/* ================================ Breadcrumbs */
+.breadcrumbs-box { 
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.07);
+  padding: 8px 0px ; /* Sirf top-bottom padding */
+  margin: 16px 0 28px 0;
+  width: 100%;
+  display: flex;
+}
+
+.breadcrumbs { 
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 10px;
+}
+
+.breadcrumb-item { 
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #888;
+  font-weight: 500;
+  gap: 4px;
+}
+
+.breadcrumb-icon { 
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
+}
+
+.breadcrumb-separator { 
+  color: #e0e0e0;
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 3px;
+  user-select: none;
+}
+
+.active-cab-id { 
+  color: #1976d2;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .breadcrumbs-box {
+    padding: 8px 5px;
+    font-size: 13px;
+  }
+  .breadcrumbs {
+    gap: 6px;
+  }
+}
+
+/* ================================ Stats Cards */
+
+/* src/components/Header/Header.css */
+.stats-row {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 32px;
+  flex-wrap: nowrap;            /* Badi screen me wrap nahi hona chahiye */
+  justify-content: space-between; /* Cards ke beech chamakdar gap */
+}
+
+.stat-card {
+  position: relative;
+  border-radius: 22px;
+  color: #fff;
+  flex: 0 1 23%;                 /* 4 cards approx 23% width */
+  min-width: 160px;
+  max-width: unset;
+  height: 130px;
+  box-shadow: 0 2px 14px 0 rgba(50,50,93,0.08);
+  padding: 20px 20px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+/* Cards background gradient */
+.card-blue {
+  background: linear-gradient(135deg, #6a9efc 0%, #2a5afb 100%);
+  
+}
+
+.card-orange {
+  background: linear-gradient(135deg, #ffc261 0%, #ff6600 100%);
+}
+
+.card-green {
+  background: linear-gradient(135deg, #6aea91 0%, #198747 100%);
+}
+
+.card-purple {
+background: linear-gradient(135deg, #8431ca 0%, #ff2fa9 100%);
+
+
+
+
+}
+
+
+/* Circle decoration adjust */
+.stat-card-decor-topright {
+  position: absolute;
+  top: -16px;
+  right: -33px;                 /* Circle ka aadha part bahar hai */
+  width: 66px;
+  height: 66px;
+  background: rgba(255,255,255,0.16);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Arrow icon hamesha circle ke niche */
+.stat-card-arrow-icon {
+  position: absolute;
+  top: 50px;                   /* Circle ke neeche gap ke sath */
+  right: 0px;                  /* Card ke andar thoda left */
+  width: 22px;
+  height: 22px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+}
+
+/* Left top icon thoda bada aur position adjust */
+.stat-icon-top-left {
+  position: absolute;
+  top: 28px;  /* badha diya 10px icon ko niche shift karne ke liye */
+  left: 24px;
+  z-index: 2;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Value aur title me thoda aur gap */
+.stat-value {
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 50px; /* Icon se number ke beech gap */
+  margin-bottom: 0;
+  z-index: 2;
+  line-height: 1.1;
+}
+
+.stat-title {
+  font-size: 12px;
+  margin-top: 7px; /* Number se text ke beech gap */
+  z-index: 2;
+  font-weight: 500;
+  opacity: 0.95;
+  line-height: 1.2;
+}
+
+/* Responsive layout for medium screen */
+@media (max-width: 900px) {
+  .stats-row {
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Wrap hone par left align */
+  }
+
+  .stat-card {
+    flex: 1 1 48%;
+    max-width: 48%;
+    margin-bottom: 16px;
+  }
+}
+
+/* Responsive layout for small screen */
+@media (max-width: 700px) {
+  .stats-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-card {
+    width: 100% !important;
+    min-width: unset;
+    max-width: unset;
+    height: 140px;
+    padding: 18px 16px 18px 16px;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    margin-top: 28px;
+    
+  }
+
+  .stat-title {
+    font-size: 16px;
+    margin-top: 6px;
+  }
+
+  .stat-card-decor-topright {
+    top: -20px;
+    right: -20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .stat-card-arrow-icon {
+    top: 38px;
+    right: 20;
+    width: 18px;
+    height: 18px;
+
+  }
+
+  .stat-icon-top-left {
+    width: 32px;
+    height: 32px;
+    top: 16px;
+    left: 18px;
+  }
+}
+
+
+/* =========================service  */
+
+.service-header-card {
+  background: #fff;
+  box-shadow: 0 2px 16px rgba(44,63,80,0.06);
+
+
+
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  margin-top: 24px;
+}
+
+.service-header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.service-header-icon {
+  background: #2864fb;
+  border-radius: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ /* box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3); */
+
+}
+
+.service-header-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: #25324b;
+}
+
+.service-header-desc {
+  font-size: 12px;
+  color: #7c859b;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.service-header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.service-header-record {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-header-count {
+  font-size: 21px;
+  font-weight: 600;
+  color: #25324b;
+}
+
+.service-header-record-label {
+  color: #a7aab7;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 1px;
+}
+
+.service-header-btn {
+background: linear-gradient(to right, #2563EB, #4F46E5);
+
+
+
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 22px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  /* पुराना shadow:
+     box-shadow: 0 14px 10px rgba(40,100,251,0.04);
+  */
+  /* नया, नीचे से गहरा shadow */
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.service-header-btn:hover {
+  background: #1747c9;
+}
+
+
+/* =================================Search   */
+
+.searchbar-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f9fbfd;
+  padding: 12px 18px;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(44,63,80,0.05);
+  width: 99.2%;
+  margin: 16px auto 22px auto;
+  flex-wrap: nowrap;  /* default nowrap to keep row */
+}
+
+.searchbar-input {
+  flex: 1;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: 1px solid #e5eaf0;
+  font-size: 15px;
+  background: #f9fbfd;
+  outline: none;
+   width: 350px;    /* अपनी जरूरत के हिसाब से width कम करो */
+  min-width: 180px; /* बहुत छोटा न हो */
+  max-width: 95%; 
+}
+
+.dropdown-wrap {
+  position: relative;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.searchbar-dropdown-btn {
+  background: #fff;
+  color: #425466;
+  border: 1px solid #e4eaf2;
+  border-radius: 9px;
+  padding: 8px 15px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  gap: 4px;
+  font-weight: 500;
+  white-space: nowrap; /* prevent button text wrap */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.searchbar-dropdown-list {
+  position: absolute;
+  top: 43px;
+  left: 0;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(54,70,90,0.08);
+  z-index: 30;
+  width: 100%; /* dropdown list width limited to button */
+  max-width: 300px; /* prevent excessive width */
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.searchbar-dropdown-item {
+  padding: 9px 17px;
+  cursor: pointer;
+  color: #274677;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background .13s;
+}
+
+.searchbar-dropdown-item:hover {
+  background: #f6faff;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+  .searchbar-row {
+    flex-wrap: wrap; /* allow wrapping */
+    gap: 12px;
+  }
+
+  .dropdown-wrap {
+    flex: 1 1 48%;
+    min-width: 0;
+    max-width: 48%;
+  }
+
+  .searchbar-dropdown-btn {
+    font-size: 14px;
+    padding: 7px 12px;
+  }
+
+  .searchbar-dropdown-list {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchbar-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown-wrap {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .searchbar-dropdown-btn {
+    justify-content: space-between;
+  }
+}
+
+
+/* search btn css All status and date month  */
+.status-button-row,
+.date-button-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.status-button,
+.date-button {
+  padding: 8px 14px;
+  background-color: #f1f3fa;
+  border: 1px solid #e4eaf2;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #222;
+  white-space: nowrap;
+  transition: background-color 0.2s;
+}
+
+.status-button.active,
+.date-button.active {
+background: linear-gradient(to right, #2563EB, #4F46E5);
+
+
+  color: white;
+  border-color: #2864fb;
+}
+
+.status-button:hover:not(.active),
+.date-button:hover:not(.active) {
+  background-color: #d6eafd;
+}
+
+/* search btn css All status and date month  */
+
+/* ==========================Service card  */
+
+
+
+
+/* 
+.custom-service-card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 2px 16px rgba(44,63,80,0.06);
+  width: 100%;
+  padding: 21px 28px 16px 28px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid rgba(138, 43, 226, 0.7);
+
+} */
+
+.custom-service-card {
+  background: #fff;
+  border-radius: 15px;
+  width: 100%;
+  padding: 21px 28px 16px 28px;
+  margin-bottom: 22px;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid rgba(138, 43, 226, 0.7);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* animation smooth */
+  box-shadow: none; /* कोई shadow नहीं */
+}
+
+.custom-service-card:hover {
+  box-shadow: 0 4px 12px rgba(44,63,80,0.15); /* हल्का shadow */
+  transform: scale(1.03); /* थोड़ा zoom */
+}
+
+
+/* .custom-card-main {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between; 
+    gap: 20px;
+} */
+
+.custom-card-main {
+  gap: 10px; /* gap कम करें */
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+
+.custom-meta-col,
+.custom-info-col,
+.custom-amt-col,
+.custom-desc-col {
+  flex: 1 1 220px;
+  min-width: 220px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* space-between की जगह flex-start */
+  gap: 7px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 900px) {
+  .custom-card-main {
+    flex-direction: column;
+  }
+  .custom-meta-col,
+  .custom-info-col,
+  .custom-amt-col,
+  .custom-desc-col {
+    flex: 1 1 auto; /* min-width auto रखें */
+  min-width: 0;   /* मिनिमम width कम करें */
+  gap: 7px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==== LEFT meta col ==== */
+/* .custom-meta-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 260px;
+  gap: 10px;
+} */
+.custom-meta-main-group {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+}
+.custom-meta-mainicon {
+  background: #e9f1ff;
+  border-radius: 8px;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.custom-service-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #25324b;
+}
+.custom-service-part {
+  font-size: 15px;
+  color: #8997b2;
+  margin-top: 2px;
+}
+.custom-meta-date-row {
+  display: flex;
+  flex-direction: column; /* row से column में बदल दिया */
+  align-items: flex-start; /* ऊपर से align रहने के लिए */
+  gap: 10px; /* ऊपर-नीचे spacing के लिए */
+}
+
+.custom-meta-date {
+  color: #616a85;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+.custom-meta-prio {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 7px;
+  display: inline-block;
+  
+}
+
+/* ==== INFO col ==== */
+
+
+
+
+/* .custom-info-col {
+  display: flex;
+  flex-direction: column;
+  padding: 0;        
+  margin: 0;         
+  gap: 5px;
+  align-items: flex-start; 
+} */
+
+.custom-meta-changed,
+.custom-meta-approved {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  color: #525c77;
+  margin: 0;          /* हर लाइन में margin zero */
+  padding: 0;
+  
+}
+
+.custom-meta-changed span,
+.custom-meta-approved span {
+  margin-right: 5px;    /* आइकन और टेक्स्ट के बीच consistent space */
+  color: #96a1b5;
+  font-weight: 600;
+   font-size: 12px; 
+}
+
+.custom-meta-changed > svg,
+.custom-meta-approved > svg {
+  margin-right: 4px;    /* आइकन के दायें थोड़ा स्पेस */
+  
+}
+
+
+.custom-meta-changed-value,
+.custom-meta-approved-value {
+  font-size: 11px; /* या मर्जी के अनुसार छोटा साइज़ */
+  color: #394057; /* नाम थोड़ा डार्क लेकिन हल्का */
+  /* margin-left: 20px;  */
+}
+
+
+
+/* Amount/Status Center column */
+
+
+/* .custom-amt-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column; 
+  gap: 8px;
+  min-width: 130px;
+  align-items: flex-start;
+  border: 2px solid black;
+
+} */
+
+
+/* -------------------------------service-amount   */
+.custom-service-amount {
+  font-weight: 700;
+  font-size: 20px;
+  color: #1eb47c;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  /* padding-left: 80px; left space */
+}
+
+/* Smaller screens पर font size कम करें */
+@media (max-width: 768px) {
+  .custom-service-amount {
+    font-size: 16px;
+    padding-left: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-service-amount {
+    font-size: 14px;
+    padding-left: 4px;
+  }
+}
+
+
+/* -------------------------------service-amount   */
+.custom-amt-num {
+  font-size: 21px;
+}
+.custom-service-status {
+  max-width: 140px;      /* maximum width limit */
+  width: fit-content;    /* content के हिसाब से width */
+  min-width: 70px;       /* बहुत ही छोटा न हो */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;     /* horizontal padding */
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .custom-service-status {
+    padding-left: 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .custom-service-status {
+    padding-left: 2px;
+  }
+}
+
+
+/* -------------------------------------------serive status  */
+/* DESC column (right) */
+
+
+/* .custom-desc-col {
+  flex: 1.2;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: space-between; 
+  min-width: 260px;
+} */
+
+.custom-desc-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #619cf7;
+  
+   
+  
+  
+}
+.custom-desc-value {
+  font-size: 12px;
+  color: #3e4c5c;
+  background: #f8fbfd;
+  border-radius: 9px;
+  /* padding: 12px 20px; */
+  margin-top: 10px;
+  width: 100%;
+  display: block;
+   letter-spacing: 0.1px;
+}
+
+.des-box {
+    margin-top : -10px ;
+}
+.custom-action-btnrow {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-end;
+
+}
+.custom-btn {
+  display: flex;
+  align-items: center;
+  background: #eaf6ff;
+  color: #579fe7;
+  border-radius: 28px;
+  padding: 2px 1px;
+  font-weight: 600;
+  font-size: 10px;
+  border: none;
+  cursor: pointer;
+  min-width: 98px;
+  justify-content: center;
+  gap: 1px;
+  transition: background 0.13s ease-in-out;
+  font-size: 12px;
+  /* height: 20px; */
+  /* width: 30px; */
+}
+.custom-btn-invoice {
+  background: #eaffef;
+  color: #1eb47c;
+    /* min-width: 68px; */
+}
+.custom-btn:hover {
+  background: #d6eafd;
+}
+.custom-btn-invoice:hover {
+  background: #d1ffe9;
+}
+
+@media (max-width: 900px) {
+  .custom-card-main {
+    flex-direction: column;
+  }
+  .custom-meta-col,
+  .custom-info-col,
+  .custom-amt-col,
+  .custom-desc-col {
+    min-width: 0;
+    width: 100%;
+  }
+  .custom-desc-col {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .custom-action-btnrow {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+    
+  }
+
+  
+}
