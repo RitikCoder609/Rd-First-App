@@ -5,6 +5,7 @@ import "./Header.css";
 // import { FiUser } from "react-icons/fi";
 import { MdOutlineCheckCircle } from "react-icons/md";
 import { MdOutlineFileDownload } from "react-icons/md";
+import { MdAccessTime } from "react-icons/md";
 // ----------------------react icons
 import { IoSettingsOutline } from "react-icons/io5";
 import { RiErrorWarningLine } from "react-icons/ri";
@@ -42,7 +43,7 @@ import { RiDeleteBinLine } from "react-icons/ri";
 // ------------------------------- photo documentation
 // -----------------------------add service popup
 
-function AddServiceModal({ isOpen, onClose }) {
+function AddServiceModal({ isOpen, onClose, onCreate }) {
   if (!isOpen) return null;
 
   const [uploads, setUploads] = useState([]);
@@ -58,6 +59,9 @@ function AddServiceModal({ isOpen, onClose }) {
     paymentStatus: "",
     description: "",
   });
+
+
+
 
   function handleFileInput(event) {
     const files = Array.from(event.target.files);
@@ -94,6 +98,40 @@ function AddServiceModal({ isOpen, onClose }) {
       simulateUpload(newUpload.id);
     });
   }
+
+
+  const handleCreateService = () => {
+    if (!formData.serviceName || !formData.serviceDate) {
+      alert("Please fill required fields");
+      return;
+    }
+
+    onCreate(formData); // Parent ko data bhejna
+
+    // Form reset
+    setFormData({
+      serviceName: "",
+      componentChanged: "",
+      partName: "",
+      quantity: "",
+      serviceDate: "",
+      serviceProvider: "",
+      approvedBy: "",
+      cost: "",
+      paymentStatus: "",
+      description: "",
+    });
+
+    // Uploads reset
+    setUploads([]);
+
+    // File input reset
+    const fileInput = document.getElementById("file-input");
+    if (fileInput) fileInput.value = "";
+
+    // Modal close karna
+    onClose();
+  };
 
   function simulateUpload(id) {
     let progress = 0;
@@ -629,12 +667,20 @@ function AddServiceModal({ isOpen, onClose }) {
             &#10005; Clear Form
           </button>
 
-          <button className="create-service-btn">
+          {/* <button className="create-service-btn">
             <span role="img" aria-label="Save" style={{ fontSize: "18px" }}>
               📋
             </span>
             Create Service Record
-          </button>
+          </button> */}
+
+          <button className="create-service-btn" onClick={handleCreateService}>
+  <span role="img" aria-label="Save" style={{ fontSize: "18px" }}>
+    📋
+  </span>
+  Create Service Record
+</button>
+
         </div>
       </div>
 
@@ -652,6 +698,7 @@ function Header() {
   const [showStatus, setShowStatus] = useState(false);
   const [date, setDate] = useState("All Dates");
   const [showDate, setShowDate] = useState(false);
+  
 
   const statusRef = useRef();
   const dateRef = useRef();
@@ -659,7 +706,51 @@ function Header() {
   // / -----------------------------add service popup
 
   const [isModalOpen, setModalOpen] = useState(false);
+  
 
+
+    // Naya service record add karne ke liye function
+  // const addNewService = (newService) => {
+  //   const formattedService = {
+  //     title: newService.serviceName,
+  //     part: newService.partName,
+  //     date: new Date(newService.serviceDate).toLocaleDateString("en-GB", {
+  //       day: '2-digit',
+  //       month: 'short',
+  //       year: 'numeric',
+  //     }),
+  //     priority: 'Medium', // Default priority, aap form se customize kar sakte hain
+  //     changedBy: newService.componentChanged,
+  //     approvedBy: newService.approvedBy,
+  //     amount: newService.cost,
+  //     status: 'Pending', // Default status
+  //     description: newService.description,
+  //   };
+
+  //   setServiceData((prev) => [formattedService, ...prev]);
+  // };
+
+
+  const addNewService = (newService) => {
+  const formattedService = {
+    title: newService.serviceName,
+    part: newService.partName,
+    date: new Date(newService.serviceDate).toLocaleDateString("en-GB", { day:'2-digit', month:'short', year:'numeric' }),
+    priority: 'Medium',
+    changedBy: newService.componentChanged,
+    approvedBy: newService.approvedBy,
+    amount: newService.cost,
+    status: 'Pending',
+    description: newService.description,
+  };
+
+  setServiceData((prev) => [formattedService, ...prev]);
+};
+
+
+
+         
+  
   // / -----------------------------add service popup
   useEffect(() => {
     function handleClickOutside(e) {
@@ -676,7 +767,70 @@ function Header() {
   const dateOptions = ["All Dates", "Today", "This Week", "This Month"];
 
   // ==================== Service Data ====================
-  const serviceData = [
+  // const serviceData = [
+  //   {
+  //     title: "Brake Maintenance",
+  //     part: "Brake Pad",
+  //     date: " 15 Jan 2025",
+  //     priority: "High",
+  //     changedBy: "Rajesh Kumar (Driver)",
+  //     approvedBy: "Admin Sharma",
+  //     amount: 2500,
+  //     status: "Settled",
+  //     description:
+  //       "Routine brake pad replacement due to wear and tear. Front brake pads were completely worn out.",
+  //   },
+  //   {
+  //     title: "Engine checkup",
+  //     part: "Engine Oil",
+  //     date: " 10 Jan 2025",
+  //     priority: "Medium",
+  //     changedBy: "City Auto Workshop",
+  //     approvedBy: "Supervisor",
+  //     amount: 1200,
+  //     status: "Pending",
+  //     description: "Engine oil changed with synthetic oil.",
+  //   },
+
+  //   {
+  //     title: "Tire Replacement",
+  //     part: "Front Tires",
+  //     date: " 08 Jan 2025",
+  //     priority: "High",
+  //     changedBy: "MRF Service Center",
+  //     approvedBy: "Admin Sharma",
+  //     amount: "4,500",
+  //     status: "Pending",
+  //     description:
+  //       "Emergency tire replacement after puncture. Both front tires needed replacement due to damage.",
+  //   },
+  //   {
+  //     title: "AC Service",
+  //     part: "AC Filter",
+  //     date: " 05 Jan 2025",
+  //     priority: "Low",
+  //     changedBy: "Cool Air Services",
+  //     approvedBy: "Supervisor Patel",
+  //     amount: "650",
+  //     status: "Settled",
+  //     description:
+  //       "Air conditioning system cleaning and filter replacement for better cooling efficiency.",
+  //   },
+  //   {
+  //     title: "Battery Replacement",
+  //     part: "Car Battery",
+  //     date: " 03 Jan 2025",
+  //     priority: "High",
+  //     changedBy: "Exide Service Point",
+  //     approvedBy: "Admin Sharma",
+  //     amount: "3,200",
+  //     status: "Pending",
+  //     description:
+  //       "Battery replacement due to complete discharge and inability to hold charge.",
+  //   },
+  // ];
+
+   const [serviceData, setServiceData] = useState([
     {
       title: "Brake Maintenance",
       part: "Brake Pad",
@@ -737,7 +891,7 @@ function Header() {
       description:
         "Battery replacement due to complete discharge and inability to hold charge.",
     },
-  ];
+  ]);
 
   // ==================== Priority + Status Map ====================
   const PRIORITY = {
@@ -759,17 +913,29 @@ function Header() {
     },
   };
 
+  
+
   const [filteredServices, setFilteredServices] = useState(serviceData);
 
+  // useEffect(() => {
+  //   const filtered = serviceData.filter((service) => {
+  //     const matchesStatus =
+  //       status === "All Status" || service.status === status;
+  //     const matchesDate = date === "All Dates" || service.date.includes(date);
+  //     return matchesStatus && matchesDate;
+  //   });
+  //   setFilteredServices(filtered);
+  // }, [status, date]);
+
   useEffect(() => {
-    const filtered = serviceData.filter((service) => {
-      const matchesStatus =
-        status === "All Status" || service.status === status;
-      const matchesDate = date === "All Dates" || service.date.includes(date);
-      return matchesStatus && matchesDate;
-    });
-    setFilteredServices(filtered);
-  }, [status, date]);
+  const filtered = serviceData.filter((service) => {
+    const matchesStatus = status === "All Status" || service.status === status;
+    const matchesDate = date === "All Dates" || service.date.includes(date);
+    return matchesStatus && matchesDate;
+  });
+  setFilteredServices(filtered);
+}, [status, date, serviceData]);
+
 
   // ------------------------------------Add service popup
 
@@ -843,7 +1009,7 @@ function Header() {
               </div>
               <div className="stat-card-decor-topright"></div>
               <div className="stat-card-arrow-icon">
-                <FiTrendingUp size={26} color="#fff" style={{ opacity: 0.3 }} />
+                <MdAccessTime size={26} color="#fff" style={{ opacity: 0.3 }} />
               </div>
               <div className="stat-value">7,700</div>
               <div className="stat-title">Pending Amount</div>
@@ -908,11 +1074,11 @@ function Header() {
               >
                 + Add Service
               </button>
-              <AddServiceModal
-                isOpen={isModalOpen}
-                onClose={() => setModalOpen(false)}
-              />
-
+        <AddServiceModal
+  isOpen={isModalOpen}
+  onClose={() => setModalOpen(false)}
+  onCreate={addNewService}  // Ensure yeh ek function hi hai
+/>
               {/* ----------------------------------------service history Button */}
 
               {/* ----------------------------------------service history  */}
@@ -1026,14 +1192,7 @@ function Header() {
                     <div className="custom-desc-label">Service Description</div>
                     <div className="custom-desc-value">{item.description}</div>
                   </div>
-                  {/* <div className="custom-action-btnrow">
-          <button className="custom-btn custom-btn-view">
-            <FiEye size={17} style={{ marginRight: 4 }} /> View
-          </button>
-          <button className="custom-btn custom-btn-invoice">
-            <MdOutlineReceipt size={18} style={{ marginRight: 4 }} /> Invoice
-          </button>
-        </div> */}
+                   
                 </div>
                 <div className="custom-desc-co2">
                   <div className="custom-action-btnrow">
