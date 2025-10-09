@@ -1043,47 +1043,39 @@ function Header() {
           </div>
 
           {/* ================= Service Header ================= */}
-          <div className="service-header-card">
-            <div className="service-header-left">
-              <div className="service-header-icon">
-                <IoSettingsOutline size={28} color="#fff" />
-              </div>
-              <div>
-                <div className="service-header-title">Service History</div>
-                <div className="service-header-desc">
-                  Comprehensive vehicle maintenance tracking
-                </div>
-              </div>
-            </div>
-            <div className="service-header-right">
-              <div className="service-header-record">
-                <span className="service-header-count">5</span>
-                <span className="service-header-record-label">
-                  Total Records
-                </span>
-              </div>
+        <div className="service-header-card">
+  <div className="service-header-left">
+    <div className="service-header-icon">
+      <IoSettingsOutline size={28} color="#fff" />
+    </div>
+    <div>
+      <div className="service-header-title-record-row">  
+        <div className="service-header-title">Service History</div>
+        <div className="service-header-record">
+          <span className="service-header-count">5</span>
+          <span className="service-header-record-label">Total Records</span>
+        </div>
+      </div>
+      <div className="service-header-desc">
+        Comprehensive vehicle maintenance tracking
+      </div>
+    </div>
+  </div>
+  <div className="service-header-right">
+    <button
+      className="service-header-btn"
+      onClick={() => setModalOpen(true)}
+    >
+      + Add Service
+    </button>
+    <AddServiceModal
+      isOpen={isModalOpen}
+      onClose={() => setModalOpen(false)}
+      onCreate={addNewService} 
+    />
+  </div>
+</div>
 
-              {/* ----------------------------------------service history  */}
-
-              {/* <button className="service-header-btn">+ Add Service</button> */}
-
-              {/* ----------------------------------------service history Button */}
-              <button
-                className="service-header-btn"
-                onClick={() => setModalOpen(true)}
-              >
-                + Add Service
-              </button>
-        <AddServiceModal
-  isOpen={isModalOpen}
-  onClose={() => setModalOpen(false)}
-  onCreate={addNewService}  // Ensure yeh ek function hi hai
-/>
-              {/* ----------------------------------------service history Button */}
-
-              {/* ----------------------------------------service history  */}
-            </div>
-          </div>
 
           {/* ================= Searchbar + Filters ================= */}
           <div className="searchbar-row">
@@ -1093,6 +1085,7 @@ function Header() {
               placeholder="Search services, parts, or providers..."
             />
 
+ <div className="mobile-button-row">     
             <div className="status-button-row">
               {statusOptions.map((item) => (
                 <button
@@ -1116,6 +1109,7 @@ function Header() {
                 </button>
               ))}
             </div>
+             </div>
           </div>
 
           {/* ================= Render Service Cards ================= */}
