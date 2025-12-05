@@ -1,30 +1,16 @@
-/* Reset aur base styles */
-*,
-*::before,
-*::after {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;            /* Padding hata di full width ke liye */
+body {
   font-family: Arial, sans-serif;
-  background-color: #f8fafc;
-  min-height: 100vh;
-  overflow-x: hidden;    /* Horizontal scroll pure page se hatane ke liye */
-}
-
-@media (max-width: 768px) {
-  html, body {
-    padding: 0;
-  }
-}
-
- 
-
-.content-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  background-color: #f8fafc;
 }

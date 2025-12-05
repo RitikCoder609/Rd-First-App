@@ -1,0 +1,266 @@
+/* 🌸 GLOBAL BACKGROUND */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+.birthday-container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background: radial-gradient(circle, #ffd6e6, #ff9acb);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 🦋 Floating Butterflies */
+.butterfly {
+  position: absolute;
+  font-size: 28px;
+  animation: fly 10s linear infinite;
+  opacity: 0.9;
+}
+
+@keyframes fly {
+  0% { transform: translateX(-50px) rotate(0deg); }
+  100% { transform: translateX(120vw) rotate(360deg); }
+}
+
+/* POPUP */
+.popup {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: #fff;
+  padding: 25px;
+  width: 300px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px #ff7eb3;
+  z-index: 10;
+}
+.popup input {
+  padding: 12px;
+  width: 90%;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #ff7eb3;
+  outline: none;
+}
+.popup button {
+  margin-top: 18px;
+  padding: 10px 0;
+  width: 100%;
+  background: #ff4d94;
+  color: white;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+/* WELCOME TEXT */
+.welcome-text {
+  margin-top: 22vh;
+  font-size: 45px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 12px #ff8fcf;
+}
+
+/* BLESSING TEXT */
+.blessing-text {
+  margin-top: 15px;
+  font-size: 18px;
+  color: white;
+  line-height: 1.6;
+  padding: 0 20px;
+  text-shadow: 0 0 10px #ff7ab8;
+}
+
+/* QUIZ BOX */
+.quiz-box {
+  background: #ffffff;
+  width: 300px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px #ff80c0;
+  border: 2px solid #ff9acb;
+}
+.quiz-box h2 {
+  color: #ff2f92;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.quiz-box p {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.quiz-box button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #ff4d94;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.quiz-box button:hover {
+  background: #ff1f7a;
+}
+
+/* 🎉 CELEBRATION MODE (angels + balloons) */
+.celebration {
+  pointer-events: none;
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+.celebration.active {
+  opacity: 1;
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  left: 20%;
+  bottom: -100px;
+  font-size: 50px;
+  animation: balloon-up 4s ease-in-out forwards;
+}
+.balloon2 {
+  left: 70%;
+  animation-delay: 0.4s;
+}
+
+@keyframes balloon-up {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-120vh) scale(1.3); }
+}
+
+/* Angels */
+.angel {
+  position: absolute;
+  left: 15%;
+  bottom: -100px;
+  font-size: 40px;
+  animation: angel-up 4s ease-in-out forwards;
+}
+.angel2 {
+  left: 75%;
+  animation-delay: 0.5s;
+}
+
+@keyframes angel-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
+
+/* Celebration Text */
+.celebrate-text {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  width: 90%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 0 15px #ff4d94;
+  animation: fade-in 2s forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* BOOK WRAPPER */
+.book-wrapper {
+  margin-top: 40px;
+}
+
+.book-page {
+  width: 320px;
+  height: 420px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 25px #ff79bf;
+  border: 4px solid #ff9acb;
+  transform-style: preserve-3d;
+}
+
+.page-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* NAV BUTTONS */
+.book-nav {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+.book-nav button {
+  padding: 10px 22px;
+  background: white;
+  border: 2px solid #ff4d94;
+  color: #ff007f;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.book-nav button:hover {
+  background: #ff4d94;
+  color: white;
+}
+.book-nav button:disabled {
+  background: #ddd;
+  color: gray;
+  border-color: #aaa;
+  cursor: not-allowed;
+}
+
+/* FINAL MESSAGE */
+.final-love {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 15px #ff4d94;
+  animation: finalPop 2s infinite alternate;
+}
+.final-love p {
+  font-size: 22px;
+  margin-top: 15px;
+}
+
+@keyframes finalPop {
+  0% { transform: translateX(-50%) scale(0.9); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 480px) {
+  .welcome-text { font-size: 32px; margin-top: 8vh; }
+  .blessing-text { font-size: 15px; padding: 0 10px; }
+  .quiz-box { width: 85%; }
+  .book-page { width: 260px; height: 350px; }
+  .celebrate-text { font-size: 16px; top: 29%; }
+}

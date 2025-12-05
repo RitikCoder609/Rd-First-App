@@ -1,12 +1,22 @@
-import Header from "./components/Header/Header";
+//  import BirthdayPage from "./components/birthday/page";
 
-export default function Dashboard() {
-  return (
-    <>
-      <Header />
-      <div className="content-container">
+// export default function Dashboard() {
+//   return (
+//     <>
+//       <BirthdayPage />
+//       <div className="content-container">
        
-      </div>
-    </>
-  );
+//       </div>
+//     </>
+//   );
+// }
+
+
+
+"use client";
+
+import BirthdayPage from "./components/birthday/page";
+
+export default function Home() {
+  return <BirthdayPage />;
 }
